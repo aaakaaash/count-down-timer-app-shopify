@@ -1,3 +1,5 @@
+// count-down-timer-app/ app/ routes/ api.timers.jsx
+
 import { connectDB } from "../db.server.js";
 import Timer from "../models/Timer.js";
 
@@ -39,6 +41,7 @@ export const loader = async ({ request }) => {
           size: timer.size,
           position: timer.position,
           urgency: timer.urgency,
+          color: timer.color,
         })),
       }),
       {

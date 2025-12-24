@@ -1,0 +1,59 @@
+{% comment %}
+  Countdown Timer Theme App Block
+{% endcomment %}
+
+<style>
+.countdown-timer {
+  padding: 10px 14px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  display: none; /* Hidden by default, shown by JS when timer is active */
+}
+
+.countdown-timer .countdown-time {
+  margin-left: 6px;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+
+.countdown-timer.urgency {
+  background: #ffe5e5;
+  color: #c40000;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+</style>
+
+<div
+  class="countdown-timer"
+  data-shop="{{ shop.permanent_domain }}"
+>
+  <span class="countdown-text">Offer ends in:</span>
+  <span class="countdown-time">00:00:00</span>
+</div>
+
+<script src="{{ 'countdown.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "target": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Configure your countdown timers in the app admin panel. The timer will automatically display when active."
+    }
+  ]
+}
+{% endschema %}
